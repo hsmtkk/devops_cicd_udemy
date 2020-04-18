@@ -3,8 +3,8 @@ type: docker
 name: default
 
 steps:
-- name: greeting
-  image: alpine
-  commands:
-  - echo hello
-  - echo world
+  - name: build
+    image: maven:3.6.3-jdk-8-slim
+    commands:
+      - mvn --batch package --file pom.xml
+      - file webapp/target/webapp.war
