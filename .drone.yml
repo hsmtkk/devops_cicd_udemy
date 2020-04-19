@@ -20,6 +20,7 @@ steps:
         - ./manifest/valaxy-deploy.yml
         - ./manifest/valaxy-service.yml
       target: /tmp
+      overwrite: true
 
   - name: apply_kubernetes_manifest
     image: appleboy/drone-ssh
@@ -30,5 +31,5 @@ steps:
       key:
         from_secret: SSH_PRIVATE_KEY
       script:
-        - kubectl apply -f /tmp/valaxy-deploy.yml
-        - kubectl apply -f /tmp/valaxy-service.yml
+        - kubectl apply -f /tmp/manifest/valaxy-deploy.yml
+        - kubectl apply -f /tmp/manifest/valaxy-service.yml
