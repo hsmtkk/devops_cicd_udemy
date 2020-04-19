@@ -3,8 +3,7 @@ type: docker
 name: default
 
 steps:
-  - name: build
-    image: maven:3.6.3-jdk-8-slim
+  - name: my_ip
+    image: curlimages/curl:7.69.1
     commands:
-      - mvn --batch package --file pom.xml
-      - file webapp/target/webapp.war
+      - curl httpbin.org/ip
